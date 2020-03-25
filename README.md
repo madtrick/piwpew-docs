@@ -512,9 +512,9 @@ Notification which includes the results of the radar scan. The radar scans 360˚
 | `position.x` | float | x coordinate of the unknown object's position at the moment of the scan |
 | `position.y` | float | y coordinate of the unknown object's position at the moment of the scan |
 
-#### Shot hit
+#### Hit
 
-Notification sent by the game to each player hit by a shot. One notification is sent per shot hit.
+Notification sent by the game to each player hit by a shot or a mine. One notification is sent per hit.
 
 ##### notification payload
 
@@ -522,26 +522,6 @@ Notification sent by the game to each player hit by a shot. One notification is 
 {
   "type": "Notification",
   "id": "Hit",
-  "data": {
-  	"damage": 1
-  }
-}
-```
-
-| Property      | Type  | Description                                                  |
-| ------------- | ----- | ------------------------------------------------------------ |
-| `data.damage` | float | Damage taken by the player. The life of the player will be reduce in an amount equal to the value of the damage |
-
-#### Mine hit
-
-Notification sent by the game to each player which hits a mine. One notification is sent per mine hit.
-
-##### notification payload
-
-```json
-{
-  "type": "Notification",
-  "id": "MineHit",
   "data": {
   	"damage": 1
   }
