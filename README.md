@@ -84,7 +84,7 @@ Players have to open a websocket connection with `wss://game.piwpew.com/ws/playe
 
 ## Game protocol
 
-Version: 0.0
+Current version: 1.0.0
 
 ### Requests
 
@@ -99,14 +99,23 @@ A player must send this request before joining a game. It registers the player i
   "type": "Request",
   "id": "RegisterPlayer",
   "data": {
+    "game": {
+      "version": "1.0.0"
+    },
     "id": "player-1"
   }
 }
 ```
 
-| Property           | Type   | Required | Description                                                  |
-| ------------------ | ------ | -------- | ------------------------------------------------------------ |
-| `data.movement.id` | string | yes      | The id of the player. This value will be printed in the UI to identify the player |
+| Property            | Type   | Required | Description                                                  |
+| ------------------- | ------ | -------- | ------------------------------------------------------------ |
+| `data.game.version` | string | yes      | The protocol of the game the player uses                     |
+| `data.id`           | string | yes      | The id of the player. This value will be printed in the UI to identify the player |
+
+The game version follows the semver principles:
+
+* Bots requesting to register with a version which has a `minor` or a `patch` lower than the current server version will be allowed to register.
+* Bots requesting to register with a version which has `major` minor than the current server version won't be allowed to register.
 
 ##### response payload
 
@@ -118,6 +127,9 @@ successful request
   "id": "RegisterPlayer",
   "success": true,
   "details": {
+    "game": {
+      "version": "1.0.0"
+    },
     "position": {
       "x": 34.23,
       "y": 26.12
@@ -127,12 +139,13 @@ successful request
 }
 ```
 
-| Property                            | Type    | Description                          |
-| ----------------------------------- | ------- | ------------------------------------ |
-| `success`                           | boolean | `true` for successful requests       |
-| `data.component.details.position.x` | float   | initial `x` coordinate of the player |
-| `data.component.details.position.y` | float   | initial `y` coordinate of the player |
-| `data.component.details.rotation`   | float   | initial rotation of the player       |
+| Property               | Type    | Description                          |
+| ---------------------- | ------- | ------------------------------------ |
+| `success`              | boolean | `true` for successful requests       |
+| `details.game.version` | string  | The game version run by the server   |
+| `details.position.x`   | float   | initial `x` coordinate of the player |
+| `details.position.y`   | float   | initial `y` coordinate of the player |
+| `details.rotation`     | float   | initial rotation of the player       |
 
 unsuccessful request
 
