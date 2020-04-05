@@ -84,7 +84,7 @@ Players have to open a websocket connection with `wss://game.piwpew.com/ws/playe
 
 ## Game protocol
 
-Current version: 1.0.0
+Current version: 1.1.0
 
 ### Requests
 
@@ -437,11 +437,47 @@ unsuccessful request
 
 ### Notifications
 
-At the end of each tick the game will send notifications to let players know of events which happened during the current tick.
+Notifications are messages sent by the game engine which are not the response to a player request.
+
+#### Join game
+
+Notification sent to the player once it has joined a game. Sent only after successfully registering and once the game starts (or if the game was already started when the player registered).
+
+##### notification payload
+
+```json
+{
+  "type": "Notification",
+  "id": "JoinGame",
+  "details": {
+    "game": {
+      "settings": {
+        "playerSpeed": 10,
+        "shotSpeed": 11,
+        "arenaWidth": 100,
+        "arenaHeight": 100,
+        "playerRadius": 16,
+        "radarScanRadius": 80,
+        "turboMultiplier": 2
+      }
+    }
+  }
+}
+```
+
+| Property                                | Type    | Description                                                  |
+| --------------------------------------- | ------- | ------------------------------------------------------------ |
+| `details.game.settings.playerSpeed`     | integer | Speed of the player when moving (backward or forward)        |
+| `details.game.settings.shotSpeed`       | integer | Speed of the shot                                            |
+| `details.game.settings.turboMultiplier` | integer | Speed multiplier applied when movements use the `withTurbo` option |
+| `details.game.settings.playerRadius`    | integer | Radius of the player                                         |
+| `details.game.settings.radarScanRadius` | integer | Radius of the radar scan                                     |
+| `details.game.settings.arenaWidth`      | integer | Width of the arena                                           |
+| `details.game.settings.arenaHeight`     | integer | Height of the arena                                          |
 
 #### Radar scan
 
-Notification which includes the results of the radar scan. The radar scans 360˚around each player.
+Notification which includes the results of the radar scan. The radar scans 360˚around each player. The game sends only one radar scan notification per tick.
 
 ##### notification payload
 
