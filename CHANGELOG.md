@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.0.0] - 2020-04-07
+
+### Added
+
+- Add `Tick` notification. This notification is sent after all the responses and other notifications have been sent to the player
+
 ## [1.1.0] - 2020-04-05
 
 ### Added
