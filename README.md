@@ -84,7 +84,7 @@ Players have to open a websocket connection with `wss://game.piwpew.com/ws/playe
 
 ## Game protocol
 
-Current version: 1.1.0
+Current version: **2.0.0**
 
 ### Requests
 
@@ -474,6 +474,21 @@ Notification sent to the player once it has joined a game. Sent only after succe
 | `details.game.settings.radarScanRadius` | integer | Radius of the radar scan                                     |
 | `details.game.settings.arenaWidth`      | integer | Width of the arena                                           |
 | `details.game.settings.arenaHeight`     | integer | Height of the arena                                          |
+
+#### Tick
+
+Notification sent to the player after the game state has been updated, the requests have been processed and their responses as well as any other notification have been sent. Once this notification has been received players can send new requests without having to worry about overriding previously sent requests.
+
+The game sends this notification as soon as the connection with the player has been stablished.
+
+##### notification payload
+
+```json
+{
+  "type": "Notification",
+  "id": "Tick"
+}
+```
 
 #### Radar scan
 
