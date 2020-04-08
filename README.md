@@ -84,7 +84,7 @@ Players have to open a websocket connection with `wss://game.piwpew.com/ws/playe
 
 ## Game protocol
 
-Current version: **2.0.0**
+Current version: **2.1.0**
 
 ### Requests
 
@@ -134,7 +134,9 @@ successful request
       "x": 34.23,
       "y": 26.12
     },
-    "rotation": 45.45
+    "rotation": 45.45,
+    "life": 100,
+    "tokens": 100
   }
 }
 ```
@@ -146,6 +148,8 @@ successful request
 | `details.position.x`   | float   | initial `x` coordinate of the player |
 | `details.position.y`   | float   | initial `y` coordinate of the player |
 | `details.rotation`     | float   | initial rotation of the player       |
+| `details.life`         | float   | initial life of the player           |
+| `details.tokens`       | float   | initial tokens of the player         |
 
 unsuccessful request
 
