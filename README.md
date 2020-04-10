@@ -84,7 +84,7 @@ Players have to open a websocket connection with `wss://game.piwpew.com/ws/playe
 
 ## Game protocol
 
-Current version: **2.1.0**
+Current version: **2.1.1**
 
 ### Requests
 
