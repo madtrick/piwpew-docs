@@ -10,6 +10,33 @@ Your role in this game, differently to others, is not to control the player but 
 
 ![](./assets/bots.gif)
 
+## Table of contents
+
+- [About](#about)
+- [Game](#game)
+- [Table of contents](#table-of-contents)
+- [:warning: Warning :warning:](#warning-warning-warning)
+- [Getting started](#getting-started)
+- [Game states](#game-states)
+- [Game flow](#game-flow)
+- [Game ticks](#game-ticks)
+- [Game arena](#game-arena)
+- [Player](#player)
+  - [Player tokens](#player-tokens)
+- [Connecting to the game](#connecting-to-the-game)
+- [Game protocol](#game-protocol)
+  - [Requests](#requests)
+    - [Register](#register)
+    - [Move](#move)
+    - [Rotate](#rotate)
+    - [Shoot](#shoot)
+    - [Deploy mine](#deploy-mine)
+  - [Notifications](#notifications)
+    - [Join game](#join-game)
+    - [Tick](#tick)
+    - [Radar scan](#radar-scan))
+    - [Hit](#hit)
+
 ## :warning: Warning :warning:
 
 The game is under development and breaking changes might occur without previous announcement at any moment.
@@ -72,7 +99,7 @@ Players can perform the following actions:
 
 Each player has a radar that scans its surroundings on each tick. Players will receive a notification with the results of the radar scan. The scan results includes the players, shoots and mines within range of the radar. It also includes other objects which are not close enough for the radar to determine their type. See the [radar scan notification](#radar-scan) for more details.
 
-## Player tokens
+### Player tokens
 
 Tokens are the currency of the game and as such they are used to pay for certain actions: shoot, deploy mines or apply a turbo to a movement request.
 
@@ -80,7 +107,7 @@ On each tick tokens are added to the balance of each player and are substracted 
 
 ## Connecting to the game
 
-Players have to open a websocket connection with `wss://game.piwpew.com/ws/player`.
+Players have to open a websocket connection to `wss://game.piwpew.com/ws/player`.
 
 ## Game protocol
 
