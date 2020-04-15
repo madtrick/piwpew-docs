@@ -34,7 +34,7 @@ Your role in this game, differently to others, is not to control the player but 
   - [Notifications](#notifications)
     - [Join game](#join-game)
     - [Tick](#tick)
-    - [Radar scan](#radar-scan))
+    - [Radar scan](#radar-scan)
     - [Hit](#hit)
 
 ## :warning: Warning :warning:
